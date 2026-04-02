@@ -1,0 +1,173 @@
+
+
+body {
+  margin: 2rem;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: serif;
+  line-height: 1.15;
+  font-size: 1rem;
+
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/* Intestazione */
+.title {
+  position: absolute;        /* Posizione fissa rispetto alla pagina */
+  top: 50%;                 /* Distanza dal margine superiore */
+  left: 50%;                 /* Centra orizzontalmente */
+  transform: translateX(-50%); /* Centra esattamente */
+  text-align: center;        /* Centra il testo orizzontalmente */
+  font-weight: regular;         /* Rende il titolo più evidenziato */
+  width: 80%;
+opacity: 1;
+/*   opacity: 0.6;*/
+  color: #fff;
+}
+
+.opacity{
+  opacity: 0.5;
+}
+
+/* SFONDO FISSO */
+.background {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+
+/* CONTENITORE CHE SBORDA DAL BASSO */
+.gallery-wrapper {
+  position: relative;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+    inset: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* non prende tutta la pagina */
+
+    overflow-x: auto;
+  overflow-y: hidden;
+  pointer-events: none; /* di default NON blocca i click */
+
+    /* z-index: 2;
+    pointer-events: none;  permette click solo dentro la gallery */
+}
+
+/* COLONNA SCROLLABILE */
+.gallery {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 25px;
+    pointer-events: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    pointer-events: none; /* la gallery continua a funzionare */
+
+
+    padding-top: 88vh;   /* spazio iniziale */
+  padding-bottom: 88vh; /* 🔥 spazio finale per non tagliare */
+  /* cursor: ns-resize; */
+
+
+
+}
+
+.gallery::-webkit-scrollbar {
+    display: none;  }
+
+.gallery img {
+    height: 250px;
+    width: auto;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
+    pointer-events: auto; /* SOLO le immagini cliccabili */
+
+}
+
+.gallery img:hover {
+
+    cursor: zoom-in;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+     cursor: pointer;
+}
+
+.caption {
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 28px;
+    font-family: serif;
+    font-size: 1rem;
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 768px) {
+
+  .gallery {
+    flex-direction: column;
+    padding-top: 78vh;   /* spazio iniziale */
+  padding-bottom: 78vh;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+}
