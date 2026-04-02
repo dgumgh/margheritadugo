@@ -155,6 +155,9 @@ opacity: 1;
 /* 🔥 MOBILE */
 @media (max-width: 768px) {
 
+  body{
+    overflow-x: hidden;}
+  
   .gallery {
     flex-direction: column;
     padding-top: 78vh;   /* spazio iniziale */
