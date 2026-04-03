@@ -162,6 +162,7 @@ opacity: 1;
     flex-direction: column;
     padding-top: 78vh;   /* spazio iniziale */
   padding-bottom: 78vh;
+    overflow-x: hidden;}
   }
 
   .gallery img {
