@@ -168,6 +168,7 @@ opacity: 1;
   .gallery img {
     width: 100%;
     height: auto;
+    overflow-y: hidden;
   }
 
   .title {
