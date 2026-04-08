@@ -98,10 +98,20 @@ let currentIndex = 0;
 images.forEach((img, index) => {
   img.addEventListener('click', () => {
     currentIndex = index;
-lightbox.classList.add('active');
-lightboxImg.src = img.src;
-caption.textContent = img.alt;
+
+    lightbox.classList.add('active');
+    document.body.classList.add("no-scroll");
+    history.pushState({ lightbox: true }, "");
+
+    lightboxImg.src = img.src;
+    caption.textContent = img.alt;
+  });
 });
+
+window.addEventListener('popstate', (e) => {
+if (lightbox.classList.contains('active')) {
+  closeLightbox();
+}
 });
 
 function showImage(index) {
@@ -121,7 +131,11 @@ function prevImage() {
 }
 
 function closeLightbox() {
-lightbox.classList.remove('active');
+  lightbox.classList.remove('active');
+  document.body.classList.remove("no-scroll");
+  if (history.state && history.state.lightbox) {
+    history.back();
+  }
 }
 
 closeBtn.addEventListener('click', closeLightbox);
@@ -146,6 +160,7 @@ lightbox.addEventListener('click', (e) => {
   }
 });
 
+
 document.addEventListener('keydown', (e) => {
   if (!lightbox.classList.contains('active')) return;
 
@@ -153,6 +168,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === "ArrowRight") nextImage();
   if (e.key === "ArrowLeft") prevImage();
 });
+
 
 </script>
 
