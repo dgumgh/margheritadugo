@@ -65,8 +65,6 @@ opacity: 1;
   overflow-y: hidden;
   pointer-events: none; /* di default NON blocca i click */
 
-    /* z-index: 2;
-    pointer-events: none;  permette click solo dentro la gallery */
 }
 
 /* COLONNA SCROLLABILE */
@@ -78,7 +76,6 @@ opacity: 1;
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 25px;
-    pointer-events: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
     pointer-events: none; /* la gallery continua a funzionare */
@@ -112,6 +109,16 @@ opacity: 1;
     cursor: zoom-in;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+.no-scroll .gallery {
+  overflow: hidden;
+}
+
+.no-scroll .gallery-wrapper {
+  overflow: hidden;
+}
 /* Lightbox */
 .lightbox {
     position: fixed;
@@ -122,6 +129,7 @@ opacity: 1;
     align-items: center;
     flex-direction: column;
     visibility: hidden;
+    overflow-x:hidden;
     z-index: 10;
 }
 
@@ -155,28 +163,25 @@ opacity: 1;
 /* 🔥 MOBILE */
 @media (max-width: 768px) {
 
-  body{
-    overflow-x: hidden;}
-  
+body{
+  overflow-x: hidden;
+}
   .gallery {
     flex-direction: column;
     padding-top: 78vh;   /* spazio iniziale */
   padding-bottom: 78vh;
-    overflow-x: hidden;
+  overflow-x: hidden;
   }
 
   .gallery img {
     width: 100%;
     height: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
   }
 
   .title {
     font-size: 16px;
   }
-
-  a:hover {
-  text-decoration: none;
-}
 
 }
